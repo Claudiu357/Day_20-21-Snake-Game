@@ -25,6 +25,10 @@ while game_is_on:
     screen.update()
     time.sleep(0.1)
     snake.move()
+    if scoreboard.SCORE > scoreboard.high_score:
+        with open("high_score.txt", mode="w") as file:
+            str_score = str(scoreboard.SCORE)
+            file.write(str_score)
     if snake.head.distance(food) < 15:
         food.refresh()
         scoreboard.score()
